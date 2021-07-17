@@ -1,5 +1,5 @@
 //
-//  FeedController.swift
+//  FeedViewController.swift
 //  NovConnect
 //
 //  Created by Tai Phan Van on 17/07/2021.
@@ -9,7 +9,7 @@ import UIKit
 
 private let reuseIdentifier = "FeedCell"
 
-class FeedController: UICollectionViewController {
+class FeedViewController: UICollectionViewController {
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -27,7 +27,7 @@ class FeedController: UICollectionViewController {
 }
 
 // MARK: - UICollectionViewDataSource
-extension FeedController {
+extension FeedViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         5
     }
@@ -39,7 +39,7 @@ extension FeedController {
 }
 
 // MARK: - UICollectionViewFlowLayout
-extension FeedController: UICollectionViewDelegateFlowLayout {
+extension FeedViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width = self.view.frame.width

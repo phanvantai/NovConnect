@@ -14,11 +14,11 @@
 		D17AB98626A3204800F2C27B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17AB98526A3204800F2C27B /* Assets.xcassets */; };
 		D17AB98926A3204800F2C27B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17AB98726A3204800F2C27B /* LaunchScreen.storyboard */; };
 		D17AB99826A3223C00F2C27B /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB99726A3223C00F2C27B /* MainTabController.swift */; };
-		D17AB99A26A323E200F2C27B /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB99926A323E200F2C27B /* FeedController.swift */; };
-		D17AB99C26A323ED00F2C27B /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB99B26A323ED00F2C27B /* SearchController.swift */; };
-		D17AB99E26A3241400F2C27B /* ImageSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB99D26A3241400F2C27B /* ImageSelectorController.swift */; };
-		D17AB9A026A3242100F2C27B /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB99F26A3242100F2C27B /* NotificationController.swift */; };
-		D17AB9A226A3243000F2C27B /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9A126A3243000F2C27B /* ProfileController.swift */; };
+		D17AB99A26A323E200F2C27B /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB99926A323E200F2C27B /* FeedViewController.swift */; };
+		D17AB99C26A323ED00F2C27B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB99B26A323ED00F2C27B /* SearchViewController.swift */; };
+		D17AB99E26A3241400F2C27B /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB99D26A3241400F2C27B /* CreatePostViewController.swift */; };
+		D17AB9A026A3242100F2C27B /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB99F26A3242100F2C27B /* NotificationViewController.swift */; };
+		D17AB9A226A3243000F2C27B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9A126A3243000F2C27B /* ProfileViewController.swift */; };
 		D17AB9A426A3307500F2C27B /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9A326A3307500F2C27B /* FeedCell.swift */; };
 		D17AB9A726A3317800F2C27B /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9A626A3317800F2C27B /* UIView+Extensions.swift */; };
 		D17AB9AA26A342E200F2C27B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9A926A342E200F2C27B /* LoginViewController.swift */; };
@@ -35,11 +35,11 @@
 		D17AB98826A3204800F2C27B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D17AB98A26A3204800F2C27B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D17AB99726A3223C00F2C27B /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
-		D17AB99926A323E200F2C27B /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
-		D17AB99B26A323ED00F2C27B /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
-		D17AB99D26A3241400F2C27B /* ImageSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorController.swift; sourceTree = "<group>"; };
-		D17AB99F26A3242100F2C27B /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		D17AB9A126A3243000F2C27B /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		D17AB99926A323E200F2C27B /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		D17AB99B26A323ED00F2C27B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		D17AB99D26A3241400F2C27B /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
+		D17AB99F26A3242100F2C27B /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		D17AB9A126A3243000F2C27B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D17AB9A326A3307500F2C27B /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		D17AB9A626A3317800F2C27B /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		D17AB9A926A342E200F2C27B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -113,11 +113,11 @@
 			children = (
 				D17AB9A826A342C100F2C27B /* Authentication */,
 				D17AB99726A3223C00F2C27B /* MainTabController.swift */,
-				D17AB99926A323E200F2C27B /* FeedController.swift */,
-				D17AB99B26A323ED00F2C27B /* SearchController.swift */,
-				D17AB99D26A3241400F2C27B /* ImageSelectorController.swift */,
-				D17AB99F26A3242100F2C27B /* NotificationController.swift */,
-				D17AB9A126A3243000F2C27B /* ProfileController.swift */,
+				D17AB99926A323E200F2C27B /* FeedViewController.swift */,
+				D17AB99B26A323ED00F2C27B /* SearchViewController.swift */,
+				D17AB99D26A3241400F2C27B /* CreatePostViewController.swift */,
+				D17AB99F26A3242100F2C27B /* NotificationViewController.swift */,
+				D17AB9A126A3243000F2C27B /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -234,12 +234,12 @@
 				D17AB98126A3204700F2C27B /* ViewController.swift in Sources */,
 				D17AB9AA26A342E200F2C27B /* LoginViewController.swift in Sources */,
 				D17AB9A426A3307500F2C27B /* FeedCell.swift in Sources */,
-				D17AB99E26A3241400F2C27B /* ImageSelectorController.swift in Sources */,
-				D17AB9A026A3242100F2C27B /* NotificationController.swift in Sources */,
-				D17AB99C26A323ED00F2C27B /* SearchController.swift in Sources */,
+				D17AB99E26A3241400F2C27B /* CreatePostViewController.swift in Sources */,
+				D17AB9A026A3242100F2C27B /* NotificationViewController.swift in Sources */,
+				D17AB99C26A323ED00F2C27B /* SearchViewController.swift in Sources */,
 				D17AB99826A3223C00F2C27B /* MainTabController.swift in Sources */,
-				D17AB9A226A3243000F2C27B /* ProfileController.swift in Sources */,
-				D17AB99A26A323E200F2C27B /* FeedController.swift in Sources */,
+				D17AB9A226A3243000F2C27B /* ProfileViewController.swift in Sources */,
+				D17AB99A26A323E200F2C27B /* FeedViewController.swift in Sources */,
 				D17AB97D26A3204700F2C27B /* AppDelegate.swift in Sources */,
 				D17AB97F26A3204700F2C27B /* SceneDelegate.swift in Sources */,
 				D17AB9A726A3317800F2C27B /* UIView+Extensions.swift in Sources */,
