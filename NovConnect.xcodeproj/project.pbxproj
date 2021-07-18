@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		D17AB97D26A3204700F2C27B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB97C26A3204700F2C27B /* AppDelegate.swift */; };
 		D17AB97F26A3204700F2C27B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB97E26A3204700F2C27B /* SceneDelegate.swift */; };
-		D17AB98126A3204700F2C27B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB98026A3204700F2C27B /* ViewController.swift */; };
-		D17AB98426A3204700F2C27B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17AB98226A3204700F2C27B /* Main.storyboard */; };
 		D17AB98626A3204800F2C27B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17AB98526A3204800F2C27B /* Assets.xcassets */; };
 		D17AB98926A3204800F2C27B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17AB98726A3204800F2C27B /* LaunchScreen.storyboard */; };
 		D17AB99826A3223C00F2C27B /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB99726A3223C00F2C27B /* MainTabController.swift */; };
@@ -23,14 +21,18 @@
 		D17AB9A726A3317800F2C27B /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9A626A3317800F2C27B /* UIView+Extensions.swift */; };
 		D17AB9AA26A342E200F2C27B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9A926A342E200F2C27B /* LoginViewController.swift */; };
 		D17AB9AC26A342F400F2C27B /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9AB26A342F400F2C27B /* RegistrationViewController.swift */; };
+		D17AB9B026A3D49400F2C27B /* CustomAuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9AF26A3D49400F2C27B /* CustomAuthTextField.swift */; };
+		D17AB9B226A3D75D00F2C27B /* CustomAuthTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9B126A3D75D00F2C27B /* CustomAuthTextButton.swift */; };
+		D17AB9B626A3E34B00F2C27B /* CustomAuthLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9B526A3E34B00F2C27B /* CustomAuthLineView.swift */; };
+		D17AB9B826A3E48C00F2C27B /* CustomAuthLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9B726A3E48C00F2C27B /* CustomAuthLabel.swift */; };
+		D17AB9BA26A3E55400F2C27B /* CustomAuthActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9B926A3E55400F2C27B /* CustomAuthActionButton.swift */; };
+		D17AB9BD26A3E73200F2C27B /* CustomAuthImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9BC26A3E73200F2C27B /* CustomAuthImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D17AB97926A3204700F2C27B /* NovConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NovConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17AB97C26A3204700F2C27B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D17AB97E26A3204700F2C27B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D17AB98026A3204700F2C27B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D17AB98326A3204700F2C27B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D17AB98526A3204800F2C27B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D17AB98826A3204800F2C27B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D17AB98A26A3204800F2C27B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,6 +46,12 @@
 		D17AB9A626A3317800F2C27B /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		D17AB9A926A342E200F2C27B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D17AB9AB26A342F400F2C27B /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		D17AB9AF26A3D49400F2C27B /* CustomAuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthTextField.swift; sourceTree = "<group>"; };
+		D17AB9B126A3D75D00F2C27B /* CustomAuthTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthTextButton.swift; sourceTree = "<group>"; };
+		D17AB9B526A3E34B00F2C27B /* CustomAuthLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthLineView.swift; sourceTree = "<group>"; };
+		D17AB9B726A3E48C00F2C27B /* CustomAuthLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthLabel.swift; sourceTree = "<group>"; };
+		D17AB9B926A3E55400F2C27B /* CustomAuthActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthActionButton.swift; sourceTree = "<group>"; };
+		D17AB9BC26A3E73200F2C27B /* CustomAuthImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,18 +84,14 @@
 		D17AB97B26A3204700F2C27B /* NovConnect */ = {
 			isa = PBXGroup;
 			children = (
+				D17AB9AE26A34A3900F2C27B /* Resources */,
+				D17AB9AD26A34A2600F2C27B /* App */,
 				D17AB99626A320EB00F2C27B /* Model */,
 				D17AB99526A320E800F2C27B /* View */,
 				D17AB99426A320E500F2C27B /* ViewModel */,
 				D17AB99326A320E100F2C27B /* Controller */,
 				D17AB99226A320DE00F2C27B /* API */,
 				D17AB99126A320C600F2C27B /* Utils */,
-				D17AB97C26A3204700F2C27B /* AppDelegate.swift */,
-				D17AB97E26A3204700F2C27B /* SceneDelegate.swift */,
-				D17AB98026A3204700F2C27B /* ViewController.swift */,
-				D17AB98226A3204700F2C27B /* Main.storyboard */,
-				D17AB98526A3204800F2C27B /* Assets.xcassets */,
-				D17AB98726A3204800F2C27B /* LaunchScreen.storyboard */,
 				D17AB98A26A3204800F2C27B /* Info.plist */,
 			);
 			path = NovConnect;
@@ -132,6 +136,7 @@
 		D17AB99526A320E800F2C27B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D17AB9BB26A3E5A500F2C27B /* Auth */,
 				D17AB9A326A3307500F2C27B /* FeedCell.swift */,
 			);
 			path = View;
@@ -159,6 +164,37 @@
 				D17AB9AB26A342F400F2C27B /* RegistrationViewController.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		D17AB9AD26A34A2600F2C27B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D17AB97C26A3204700F2C27B /* AppDelegate.swift */,
+				D17AB97E26A3204700F2C27B /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D17AB9AE26A34A3900F2C27B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D17AB98726A3204800F2C27B /* LaunchScreen.storyboard */,
+				D17AB98526A3204800F2C27B /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D17AB9BB26A3E5A500F2C27B /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				D17AB9AF26A3D49400F2C27B /* CustomAuthTextField.swift */,
+				D17AB9B126A3D75D00F2C27B /* CustomAuthTextButton.swift */,
+				D17AB9B526A3E34B00F2C27B /* CustomAuthLineView.swift */,
+				D17AB9B726A3E48C00F2C27B /* CustomAuthLabel.swift */,
+				D17AB9B926A3E55400F2C27B /* CustomAuthActionButton.swift */,
+				D17AB9BC26A3E73200F2C27B /* CustomAuthImageView.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,7 +256,6 @@
 			files = (
 				D17AB98926A3204800F2C27B /* LaunchScreen.storyboard in Resources */,
 				D17AB98626A3204800F2C27B /* Assets.xcassets in Resources */,
-				D17AB98426A3204700F2C27B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,17 +266,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D17AB98126A3204700F2C27B /* ViewController.swift in Sources */,
 				D17AB9AA26A342E200F2C27B /* LoginViewController.swift in Sources */,
+				D17AB9BD26A3E73200F2C27B /* CustomAuthImageView.swift in Sources */,
 				D17AB9A426A3307500F2C27B /* FeedCell.swift in Sources */,
 				D17AB99E26A3241400F2C27B /* CreatePostViewController.swift in Sources */,
 				D17AB9A026A3242100F2C27B /* NotificationViewController.swift in Sources */,
 				D17AB99C26A323ED00F2C27B /* SearchViewController.swift in Sources */,
 				D17AB99826A3223C00F2C27B /* MainTabController.swift in Sources */,
 				D17AB9A226A3243000F2C27B /* ProfileViewController.swift in Sources */,
+				D17AB9B226A3D75D00F2C27B /* CustomAuthTextButton.swift in Sources */,
+				D17AB9B026A3D49400F2C27B /* CustomAuthTextField.swift in Sources */,
 				D17AB99A26A323E200F2C27B /* FeedViewController.swift in Sources */,
+				D17AB9B626A3E34B00F2C27B /* CustomAuthLineView.swift in Sources */,
 				D17AB97D26A3204700F2C27B /* AppDelegate.swift in Sources */,
 				D17AB97F26A3204700F2C27B /* SceneDelegate.swift in Sources */,
+				D17AB9BA26A3E55400F2C27B /* CustomAuthActionButton.swift in Sources */,
+				D17AB9B826A3E48C00F2C27B /* CustomAuthLabel.swift in Sources */,
 				D17AB9A726A3317800F2C27B /* UIView+Extensions.swift in Sources */,
 				D17AB9AC26A342F400F2C27B /* RegistrationViewController.swift in Sources */,
 			);
@@ -250,14 +290,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D17AB98226A3204700F2C27B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D17AB98326A3204700F2C27B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D17AB98726A3204800F2C27B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
