@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,9 +27,22 @@
 		D17AB9B826A3E48C00F2C27B /* CustomAuthLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9B726A3E48C00F2C27B /* CustomAuthLabel.swift */; };
 		D17AB9BA26A3E55400F2C27B /* CustomAuthActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9B926A3E55400F2C27B /* CustomAuthActionButton.swift */; };
 		D17AB9BD26A3E73200F2C27B /* CustomAuthImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9BC26A3E73200F2C27B /* CustomAuthImageView.swift */; };
+		D17AB9C226A4229700F2C27B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9C126A4229700F2C27B /* LoginViewModel.swift */; };
+		D17AB9C426A4291D00F2C27B /* AuthenticationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9C326A4291D00F2C27B /* AuthenticationProtocol.swift */; };
+		D17AB9C626A42A4000F2C27B /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9C526A42A4000F2C27B /* RegistrationViewModel.swift */; };
+		D17AB9C826A42B6600F2C27B /* FormProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9C726A42B6600F2C27B /* FormProtocol.swift */; };
+		D17AB9CA26A436EB00F2C27B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D17AB9C926A436EB00F2C27B /* GoogleService-Info.plist */; };
+		D17AB9CC26A4443C00F2C27B /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9CB26A4443C00F2C27B /* ImageUploader.swift */; };
+		D17AB9CE26A4448000F2C27B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9CD26A4448000F2C27B /* AuthService.swift */; };
+		D17AB9D126A48B8300F2C27B /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9D026A48B8300F2C27B /* ProfileCell.swift */; };
+		D17AB9D326A48B8F00F2C27B /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB9D226A48B8F00F2C27B /* ProfileHeader.swift */; };
+		DF2DB6E6CA1B7F855B5C4B68 /* Pods_NovConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7060B874EC51C6C018ADA6 /* Pods_NovConnect.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0AD52BABB6C1EC43E758D996 /* Pods-NovConnect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NovConnect.debug.xcconfig"; path = "Target Support Files/Pods-NovConnect/Pods-NovConnect.debug.xcconfig"; sourceTree = "<group>"; };
+		917150654B37746AF8D5904F /* Pods-NovConnect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NovConnect.release.xcconfig"; path = "Target Support Files/Pods-NovConnect/Pods-NovConnect.release.xcconfig"; sourceTree = "<group>"; };
+		CF7060B874EC51C6C018ADA6 /* Pods_NovConnect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NovConnect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17AB97926A3204700F2C27B /* NovConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NovConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17AB97C26A3204700F2C27B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D17AB97E26A3204700F2C27B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +65,15 @@
 		D17AB9B726A3E48C00F2C27B /* CustomAuthLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthLabel.swift; sourceTree = "<group>"; };
 		D17AB9B926A3E55400F2C27B /* CustomAuthActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthActionButton.swift; sourceTree = "<group>"; };
 		D17AB9BC26A3E73200F2C27B /* CustomAuthImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthImageView.swift; sourceTree = "<group>"; };
+		D17AB9C126A4229700F2C27B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		D17AB9C326A4291D00F2C27B /* AuthenticationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProtocol.swift; sourceTree = "<group>"; };
+		D17AB9C526A42A4000F2C27B /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		D17AB9C726A42B6600F2C27B /* FormProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormProtocol.swift; sourceTree = "<group>"; };
+		D17AB9C926A436EB00F2C27B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D17AB9CB26A4443C00F2C27B /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
+		D17AB9CD26A4448000F2C27B /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		D17AB9D026A48B8300F2C27B /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		D17AB9D226A48B8F00F2C27B /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,17 +81,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF2DB6E6CA1B7F855B5C4B68 /* Pods_NovConnect.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		29C5957AFAD053BD907212A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF7060B874EC51C6C018ADA6 /* Pods_NovConnect.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5571A52D980CB7CEDE1AA845 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0AD52BABB6C1EC43E758D996 /* Pods-NovConnect.debug.xcconfig */,
+				917150654B37746AF8D5904F /* Pods-NovConnect.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D17AB97026A3204700F2C27B = {
 			isa = PBXGroup;
 			children = (
 				D17AB97B26A3204700F2C27B /* NovConnect */,
 				D17AB97A26A3204700F2C27B /* Products */,
+				5571A52D980CB7CEDE1AA845 /* Pods */,
+				29C5957AFAD053BD907212A9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,9 +132,10 @@
 				D17AB99526A320E800F2C27B /* View */,
 				D17AB99426A320E500F2C27B /* ViewModel */,
 				D17AB99326A320E100F2C27B /* Controller */,
-				D17AB99226A320DE00F2C27B /* API */,
+				D17AB99226A320DE00F2C27B /* Network */,
 				D17AB99126A320C600F2C27B /* Utils */,
 				D17AB98A26A3204800F2C27B /* Info.plist */,
+				D17AB9C926A436EB00F2C27B /* GoogleService-Info.plist */,
 			);
 			path = NovConnect;
 			sourceTree = "<group>";
@@ -105,11 +148,13 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		D17AB99226A320DE00F2C27B /* API */ = {
+		D17AB99226A320DE00F2C27B /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				D17AB9CB26A4443C00F2C27B /* ImageUploader.swift */,
+				D17AB9CD26A4448000F2C27B /* AuthService.swift */,
 			);
-			path = API;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		D17AB99326A320E100F2C27B /* Controller */ = {
@@ -129,6 +174,7 @@
 		D17AB99426A320E500F2C27B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D17AB9C026A4225A00F2C27B /* Authentication */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -136,7 +182,8 @@
 		D17AB99526A320E800F2C27B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D17AB9BB26A3E5A500F2C27B /* Auth */,
+				D17AB9CF26A48B7000F2C27B /* Profile */,
+				D17AB9BB26A3E5A500F2C27B /* Authentication */,
 				D17AB9A326A3307500F2C27B /* FeedCell.swift */,
 			);
 			path = View;
@@ -184,7 +231,7 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		D17AB9BB26A3E5A500F2C27B /* Auth */ = {
+		D17AB9BB26A3E5A500F2C27B /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
 				D17AB9AF26A3D49400F2C27B /* CustomAuthTextField.swift */,
@@ -194,7 +241,27 @@
 				D17AB9B926A3E55400F2C27B /* CustomAuthActionButton.swift */,
 				D17AB9BC26A3E73200F2C27B /* CustomAuthImageView.swift */,
 			);
-			path = Auth;
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		D17AB9C026A4225A00F2C27B /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				D17AB9C326A4291D00F2C27B /* AuthenticationProtocol.swift */,
+				D17AB9C726A42B6600F2C27B /* FormProtocol.swift */,
+				D17AB9C126A4229700F2C27B /* LoginViewModel.swift */,
+				D17AB9C526A42A4000F2C27B /* RegistrationViewModel.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		D17AB9CF26A48B7000F2C27B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D17AB9D026A48B8300F2C27B /* ProfileCell.swift */,
+				D17AB9D226A48B8F00F2C27B /* ProfileHeader.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,9 +271,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D17AB98D26A3204800F2C27B /* Build configuration list for PBXNativeTarget "NovConnect" */;
 			buildPhases = (
+				D3FFB70DD1A893FA5A1F3465 /* [CP] Check Pods Manifest.lock */,
 				D17AB97526A3204700F2C27B /* Sources */,
 				D17AB97626A3204700F2C27B /* Frameworks */,
 				D17AB97726A3204700F2C27B /* Resources */,
+				F61050B8B2C3818B172C5650 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -256,10 +325,53 @@
 			files = (
 				D17AB98926A3204800F2C27B /* LaunchScreen.storyboard in Resources */,
 				D17AB98626A3204800F2C27B /* Assets.xcassets in Resources */,
+				D17AB9CA26A436EB00F2C27B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D3FFB70DD1A893FA5A1F3465 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NovConnect-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F61050B8B2C3818B172C5650 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NovConnect/Pods-NovConnect-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NovConnect/Pods-NovConnect-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NovConnect/Pods-NovConnect-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D17AB97526A3204700F2C27B /* Sources */ = {
@@ -269,6 +381,7 @@
 				D17AB9AA26A342E200F2C27B /* LoginViewController.swift in Sources */,
 				D17AB9BD26A3E73200F2C27B /* CustomAuthImageView.swift in Sources */,
 				D17AB9A426A3307500F2C27B /* FeedCell.swift in Sources */,
+				D17AB9C826A42B6600F2C27B /* FormProtocol.swift in Sources */,
 				D17AB99E26A3241400F2C27B /* CreatePostViewController.swift in Sources */,
 				D17AB9A026A3242100F2C27B /* NotificationViewController.swift in Sources */,
 				D17AB99C26A323ED00F2C27B /* SearchViewController.swift in Sources */,
@@ -276,13 +389,20 @@
 				D17AB9A226A3243000F2C27B /* ProfileViewController.swift in Sources */,
 				D17AB9B226A3D75D00F2C27B /* CustomAuthTextButton.swift in Sources */,
 				D17AB9B026A3D49400F2C27B /* CustomAuthTextField.swift in Sources */,
+				D17AB9C626A42A4000F2C27B /* RegistrationViewModel.swift in Sources */,
 				D17AB99A26A323E200F2C27B /* FeedViewController.swift in Sources */,
+				D17AB9CC26A4443C00F2C27B /* ImageUploader.swift in Sources */,
 				D17AB9B626A3E34B00F2C27B /* CustomAuthLineView.swift in Sources */,
+				D17AB9CE26A4448000F2C27B /* AuthService.swift in Sources */,
 				D17AB97D26A3204700F2C27B /* AppDelegate.swift in Sources */,
 				D17AB97F26A3204700F2C27B /* SceneDelegate.swift in Sources */,
+				D17AB9D326A48B8F00F2C27B /* ProfileHeader.swift in Sources */,
 				D17AB9BA26A3E55400F2C27B /* CustomAuthActionButton.swift in Sources */,
+				D17AB9D126A48B8300F2C27B /* ProfileCell.swift in Sources */,
 				D17AB9B826A3E48C00F2C27B /* CustomAuthLabel.swift in Sources */,
+				D17AB9C426A4291D00F2C27B /* AuthenticationProtocol.swift in Sources */,
 				D17AB9A726A3317800F2C27B /* UIView+Extensions.swift in Sources */,
+				D17AB9C226A4229700F2C27B /* LoginViewModel.swift in Sources */,
 				D17AB9AC26A342F400F2C27B /* RegistrationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,6 +539,7 @@
 		};
 		D17AB98E26A3204800F2C27B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AD52BABB6C1EC43E758D996 /* Pods-NovConnect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -439,6 +560,7 @@
 		};
 		D17AB98F26A3204800F2C27B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 917150654B37746AF8D5904F /* Pods-NovConnect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

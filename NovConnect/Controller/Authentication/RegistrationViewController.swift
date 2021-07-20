@@ -10,7 +10,13 @@ import UIKit
 class RegistrationViewController: UIViewController {
     
     // MARK: - Views
-    private let instaImageView = CustomAuthImageView()
+    //private let instaImageView = CustomAuthImageView()
+    private let pickPhotoButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "plus_photo"), for: .normal)
+        button.tintColor = .lightGray
+        return button
+    }()
     private let emailTextField = CustomAuthTextField(placeholder: "Email")
     private let passwordTextField = CustomAuthTextField(placeholder: "Password")
     private let fullNameTextField = CustomAuthTextField(placeholder: "Fullname")
@@ -20,6 +26,10 @@ class RegistrationViewController: UIViewController {
     private let signInButton = CustomAuthTextButton(title: "Sign In")
     private let bottomLine = CustomAuthLineView()
     
+    // MARK: - Properties
+    private var viewModel = RegistrationViewModel()
+    private var profileImage: UIImage?
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -27,6 +37,7 @@ class RegistrationViewController: UIViewController {
         
         configureUI()
         addActions()
+        configureNotificationObservers()
     }
     
     // MARK: - Helpers
@@ -37,13 +48,22 @@ class RegistrationViewController: UIViewController {
         stackView.axis = .vertical
         stackView.spacing = 16
         
-        view.addSubview(instaImageView)
-        instaImageView.centerX(inView: view)
-        instaImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 64)
-        instaImageView.setDimensions(height: 80, width: self.view.frame.width * 2 / 3)
+        //view.addSubview(instaImageView)
+        //instaImageView.centerX(inView: view)
+        //instaImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 64)
+        //instaImageView.setDimensions(height: 80, width: self.view.frame.width * 2 / 3)
+        
+        view.addSubview(pickPhotoButton)
+        pickPhotoButton.centerX(inView: view)
+        pickPhotoButton.setDimensions(height: 140, width: 140)
+        pickPhotoButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
+        
+        signUpButton.isEnabled = false
+        passwordTextField.isSecureTextEntry = true
+        emailTextField.keyboardType = .emailAddress
         
         view.addSubview(stackView)
-        stackView.anchor(top: instaImageView.bottomAnchor, left: view.safeAreaLayoutGuide.leftAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingTop: 32, paddingLeft: 16, paddingRight: 16)
+        stackView.anchor(top: pickPhotoButton.bottomAnchor, left: view.safeAreaLayoutGuide.leftAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingTop: 32, paddingLeft: 16, paddingRight: 16)
         
         let bottomView = UIStackView(arrangedSubviews: [alreadyHaveAccountLabel, signInButton])
         bottomView.axis = .horizontal
@@ -58,18 +78,98 @@ class RegistrationViewController: UIViewController {
         bottomLine.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 1).isActive = true
     }
     
+    func configureNotificationObservers() {
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        fullNameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        userNameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+    
     func addActions() {
         signInButton.addTarget(self, action: #selector(signInOnClick), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(signUpOnClick), for: .touchUpInside)
+        pickPhotoButton.addTarget(self, action: #selector(handleProfilePhotoSelect), for: .touchUpInside)
     }
     
     // MARK: - Actions
+    @objc func handleProfilePhotoSelect() {
+        print(#function)
+        let picker = UIImagePickerController()
+        
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        present(picker, animated: true, completion: nil)
+    }
+    
     @objc func signUpOnClick() {
         print(#function)
+        signUp()
     }
     
     @objc func signInOnClick() {
         print(#function)
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func textDidChange(sender: UITextField) {
+        switch sender {
+        case emailTextField:
+            viewModel.email = sender.text
+        case passwordTextField:
+            viewModel.password = sender.text
+        case fullNameTextField:
+            viewModel.fullname = sender.text
+        case userNameTextField:
+            viewModel.username = sender.text
+        default:
+            print(sender)
+        }
+        updateForm()
+    }
+    
+    // MARK: - Functions
+    func signUp() {
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let fullname = fullNameTextField.text else { return }
+        guard let username = userNameTextField.text else { return }
+        guard let image = profileImage else { return }
+        
+        let credential = AuthCredential(email: email, password: password, fullname: fullname, username: username, profileImage: image)
+        
+        AuthService.register(withCredential: credential) { error in
+            if let error = error {
+                //
+                return
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+}
+
+// MARK: - FormProtocol
+extension RegistrationViewController: FormProtocol {
+    func updateForm() {
+        signUpButton.backgroundColor = viewModel.buttonBackgroundColor
+        signUpButton.isEnabled = viewModel.formIsValid
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+extension RegistrationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let selected = info[.editedImage] as? UIImage else { return }
+        profileImage = selected
+        
+        pickPhotoButton.layer.cornerRadius = pickPhotoButton.frame.width / 2
+        pickPhotoButton.layer.masksToBounds = true
+        pickPhotoButton.layer.borderColor = UIColor.lightGray.cgColor
+        pickPhotoButton.layer.borderWidth = 2
+        pickPhotoButton.setImage(selected.withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        picker.dismiss(animated: true, completion: nil)
     }
 }

@@ -18,7 +18,7 @@ class CustomAuthActionButton: UIButton {
         titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         backgroundColor = UIColor(red: 0.35, green: 0.80, blue: 0.99, alpha: 1.00)
         layer.cornerRadius = 5
-        setHeight(44)
+        setHeight(48)
     }
     
     required init?(coder: NSCoder) {

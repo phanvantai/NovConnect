@@ -19,12 +19,17 @@ class LoginViewController: UIViewController {
     private let signUpButton = CustomAuthTextButton(title: "Sign Up")
     private let bottomLine = CustomAuthLineView()
     
+    // MARK: - Properties
+    private var viewModel = LoginViewModel()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
         addActions()
+        
+        configuteNotificationObservers()
     }
     
     // MARK: - Helpers
@@ -49,6 +54,7 @@ class LoginViewController: UIViewController {
         forgotPassButton.anchor(top: passwordTextField.bottomAnchor, right: view.rightAnchor, paddingTop: 12, paddingRight: 16)
         
         view.addSubview(loginButton)
+        loginButton.isEnabled = false
         loginButton.anchor(top: forgotPassButton.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 16, paddingRight: 16)
         
         let stackView = UIStackView(arrangedSubviews: [dontHaveAccountLabel, signUpButton])
@@ -70,9 +76,27 @@ class LoginViewController: UIViewController {
         signUpButton.addTarget(self, action: #selector(signUpOnClick), for: .touchUpInside)
     }
     
+    func configuteNotificationObservers() {
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+    
     // MARK: - Actions
     @objc func logInOnClick() {
         print(#function)
+        doLogin()
+    }
+    
+    func doLogin() {
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        AuthService.logIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc func forgotPasswordOnClick() {
@@ -81,6 +105,24 @@ class LoginViewController: UIViewController {
     
     @objc func signUpOnClick() {
         print(#function)
-        navigationController?.pushViewController(RegistrationViewController(), animated: true)
+        self.show(RegistrationViewController(), sender: self)
+        //navigationController?.pushViewController(RegistrationViewController(), animated: true)
+    }
+    
+    @objc func textDidChange(sender: UITextField ) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        } else {
+            viewModel.password = sender.text
+        }
+        updateForm()
+    }
+}
+
+// MARK: - FormProtocol
+extension LoginViewController: FormProtocol {
+    func updateForm() {
+        loginButton.backgroundColor = viewModel.buttonBackgroundColor
+        loginButton.isEnabled = viewModel.formIsValid
     }
 }
