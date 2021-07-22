@@ -10,12 +10,19 @@ import Firebase
 
 class MainTabController: UITabBarController {
     
+    // MARK: - Properties
+    private var user: UserModel? {
+        didSet {
+            guard let user = user else { return }
+            configureControllers(withUser: user)
+        }
+    }
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureControllers()
         checkIfUserLoggedIn()
+        fetchUser()
     }
     
     // MARK: - User
@@ -23,6 +30,7 @@ class MainTabController: UITabBarController {
         if Auth.auth().currentUser == nil {
             DispatchQueue.main.async {
                 let controller = LoginViewController()
+                controller.delegate = self
                 let nav = UINavigationController(rootViewController: controller)
                 nav.modalPresentationStyle = .fullScreen
                 nav.modalTransitionStyle = .flipHorizontal
@@ -41,7 +49,13 @@ class MainTabController: UITabBarController {
     
     // MARK: - Helpers
     
-    func configureControllers() {
+    func fetchUser() {
+        UserService.fetchUser { user in
+            self.user = user
+        }
+    }
+    
+    func configureControllers(withUser user: UserModel) {
         view.backgroundColor = .clear
         
         let feedLayout = UICollectionViewFlowLayout()
@@ -53,8 +67,8 @@ class MainTabController: UITabBarController {
         
         let noti = templateNavigationController(unSelectImage: UIImage(named: "like_unselected")!, selectedImage: UIImage(named: "like_selected")!, rootViewController: NotificationViewController())
         
-        let profileLayout = UICollectionViewFlowLayout()
-        let profile = templateNavigationController(unSelectImage: UIImage(named: "profile_unselected")!, selectedImage: UIImage(named: "profile_selected")!, rootViewController: ProfileViewController(collectionViewLayout: profileLayout))
+        let profileVC = ProfileViewController(user: user)
+        let profile = templateNavigationController(unSelectImage: UIImage(named: "profile_unselected")!, selectedImage: UIImage(named: "profile_selected")!, rootViewController: profileVC)
         
         viewControllers = [feed, search, image, noti, profile]
         
@@ -69,5 +83,13 @@ class MainTabController: UITabBarController {
         nav.navigationBar.tintColor = .black
         
         return nav
+    }
+}
+
+// MARK: - AuthenticationDelgate
+extension MainTabController: AuthenticationDelgate {
+    func authenticationDidFinish() {
+        fetchUser()
+        self.dismiss(animated: true, completion: nil)
     }
 }

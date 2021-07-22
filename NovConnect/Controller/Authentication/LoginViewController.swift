@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AuthenticationDelgate: AnyObject {
+    func authenticationDidFinish()
+}
+
 class LoginViewController: UIViewController {
     
     // MARK: - Views
@@ -21,6 +25,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Properties
     private var viewModel = LoginViewModel()
+    weak var delegate: AuthenticationDelgate?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -95,6 +100,7 @@ class LoginViewController: UIViewController {
                 print(error.localizedDescription)
                 return
             }
+            self.delegate?.authenticationDidFinish()
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -105,7 +111,9 @@ class LoginViewController: UIViewController {
     
     @objc func signUpOnClick() {
         print(#function)
-        self.show(RegistrationViewController(), sender: self)
+        let registerVC = RegistrationViewController()
+        registerVC.delegate = self.delegate
+        self.show(registerVC, sender: self)
         //navigationController?.pushViewController(RegistrationViewController(), animated: true)
     }
     

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D1717AC126A7BF18009B4905 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1717AC026A7BF18009B4905 /* UserService.swift */; };
+		D1717AC326A7BF5F009B4905 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1717AC226A7BF5F009B4905 /* Constants.swift */; };
+		D1717AC526A7C1C1009B4905 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1717AC426A7C1C1009B4905 /* UserModel.swift */; };
+		D1717AC726A81E61009B4905 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1717AC626A81E61009B4905 /* ProfileHeaderViewModel.swift */; };
 		D17AB97D26A3204700F2C27B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB97C26A3204700F2C27B /* AppDelegate.swift */; };
 		D17AB97F26A3204700F2C27B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17AB97E26A3204700F2C27B /* SceneDelegate.swift */; };
 		D17AB98626A3204800F2C27B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17AB98526A3204800F2C27B /* Assets.xcassets */; };
@@ -43,6 +47,10 @@
 		0AD52BABB6C1EC43E758D996 /* Pods-NovConnect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NovConnect.debug.xcconfig"; path = "Target Support Files/Pods-NovConnect/Pods-NovConnect.debug.xcconfig"; sourceTree = "<group>"; };
 		917150654B37746AF8D5904F /* Pods-NovConnect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NovConnect.release.xcconfig"; path = "Target Support Files/Pods-NovConnect/Pods-NovConnect.release.xcconfig"; sourceTree = "<group>"; };
 		CF7060B874EC51C6C018ADA6 /* Pods_NovConnect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NovConnect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1717AC026A7BF18009B4905 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		D1717AC226A7BF5F009B4905 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D1717AC426A7C1C1009B4905 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		D1717AC626A81E61009B4905 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
 		D17AB97926A3204700F2C27B /* NovConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NovConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17AB97C26A3204700F2C27B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D17AB97E26A3204700F2C27B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				D17AB9A526A3311A00F2C27B /* Extensions */,
+				D1717AC226A7BF5F009B4905 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -153,6 +162,7 @@
 			children = (
 				D17AB9CB26A4443C00F2C27B /* ImageUploader.swift */,
 				D17AB9CD26A4448000F2C27B /* AuthService.swift */,
+				D1717AC026A7BF18009B4905 /* UserService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -175,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				D17AB9C026A4225A00F2C27B /* Authentication */,
+				D1717AC626A81E61009B4905 /* ProfileHeaderViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -192,6 +203,7 @@
 		D17AB99626A320EB00F2C27B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D1717AC426A7C1C1009B4905 /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -380,6 +392,8 @@
 			files = (
 				D17AB9AA26A342E200F2C27B /* LoginViewController.swift in Sources */,
 				D17AB9BD26A3E73200F2C27B /* CustomAuthImageView.swift in Sources */,
+				D1717AC126A7BF18009B4905 /* UserService.swift in Sources */,
+				D1717AC526A7C1C1009B4905 /* UserModel.swift in Sources */,
 				D17AB9A426A3307500F2C27B /* FeedCell.swift in Sources */,
 				D17AB9C826A42B6600F2C27B /* FormProtocol.swift in Sources */,
 				D17AB99E26A3241400F2C27B /* CreatePostViewController.swift in Sources */,
@@ -388,6 +402,8 @@
 				D17AB99826A3223C00F2C27B /* MainTabController.swift in Sources */,
 				D17AB9A226A3243000F2C27B /* ProfileViewController.swift in Sources */,
 				D17AB9B226A3D75D00F2C27B /* CustomAuthTextButton.swift in Sources */,
+				D1717AC726A81E61009B4905 /* ProfileHeaderViewModel.swift in Sources */,
+				D1717AC326A7BF5F009B4905 /* Constants.swift in Sources */,
 				D17AB9B026A3D49400F2C27B /* CustomAuthTextField.swift in Sources */,
 				D17AB9C626A42A4000F2C27B /* RegistrationViewModel.swift in Sources */,
 				D17AB99A26A323E200F2C27B /* FeedViewController.swift in Sources */,

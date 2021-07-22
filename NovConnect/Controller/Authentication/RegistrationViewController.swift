@@ -29,6 +29,7 @@ class RegistrationViewController: UIViewController {
     // MARK: - Properties
     private var viewModel = RegistrationViewModel()
     private var profileImage: UIImage?
+    weak var delegate: AuthenticationDelgate?
     
     // MARK: - Lifecycle
     
@@ -143,7 +144,7 @@ class RegistrationViewController: UIViewController {
                 //
                 return
             }
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.authenticationDidFinish()
         }
     }
 }
