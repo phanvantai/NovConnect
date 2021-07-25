@@ -7,12 +7,28 @@
 
 import Foundation
 
+enum FollowStatus: String {
+    case current = "Edit Profile"
+    case following = "Following"
+    case notFollow = "Follow"
+}
+
 struct UserModel {
     let email: String
     let fullname: String
     let profileImageUrl: String
     let username: String
     let uid: String
+    
+    var followStatus: FollowStatus?
+    
+    var following = 0
+    var followers = 0
+    var posts = 0
+    
+    var isCurrentUser: Bool {
+        return CURRENT_USER_UID == uid
+    }
     
     init(dictionary: [String: Any]) {
         email = dictionary["email"] as? String ?? ""

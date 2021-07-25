@@ -29,6 +29,7 @@ class ProfileViewController: UICollectionViewController {
         super.viewDidLoad()
         self.navigationItem.title = user.username
         configureCollectionView()
+        fetchUser()
     }
     
     // MARK: - SetupUI
@@ -40,6 +41,31 @@ class ProfileViewController: UICollectionViewController {
     }
     
     // MARK: - Helpers
+    
+    func fetchUser() {
+        if user.isCurrentUser {
+            user.followStatus = .current
+        } else {
+            UserService.checkIfUserIsFollowing(user: user) { result in
+                self.user.followStatus = result ? .following : .notFollow
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+        }
+        UserService.fetchFollowers(of: user) { followers in
+            self.user.followers = followers
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+        UserService.fetchFollowing(of: user) { following in
+            self.user.following = following
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -59,14 +85,23 @@ extension ProfileViewController {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: profileHeaderIdentifier, for: indexPath) as! ProfileHeader
         
         header.viewModel = ProfileHeaderViewModel(user: user)
+        header.viewModel?.delegate = self
         
         return header
     }
 }
 
 // MARK: - UICollectionViewDelegate
-extension ProfileViewController {
+extension ProfileViewController: ProfileHeaderViewModelDelegate {
+    func profileHeaderDidClickEditProfile(_ viewModel: ProfileHeaderViewModel) {
+        print(#function)
+        // TODO: - Edit profile
+    }
     
+    func profileHeaderDidUpdate(_ userModel: UserModel) {
+        print("\(#function)")
+        self.fetchUser()
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

@@ -34,7 +34,7 @@ class ProfileHeader: UICollectionReusableView {
     
     private lazy var editProfileButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Edit Profile", for: .normal)
+        button.setTitle("Loading", for: .normal)
         button.layer.cornerRadius = 3
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 0.5
@@ -48,7 +48,6 @@ class ProfileHeader: UICollectionReusableView {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.attributedText = attributedStatText(value: 13, label: "Posts")
         return label
     }()
     
@@ -56,7 +55,6 @@ class ProfileHeader: UICollectionReusableView {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.attributedText = attributedStatText(value: 6, label: "Followers")
         return label
     }()
     
@@ -64,7 +62,6 @@ class ProfileHeader: UICollectionReusableView {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.attributedText = attributedStatText(value: 9 , label: "Following")
         return label
     }()
     
@@ -129,7 +126,7 @@ class ProfileHeader: UICollectionReusableView {
     
     // MARK: - Actions
     @objc func editProfileButtonOnClick() {
-        print(#function)
+        viewModel?.editProfileButtonClick()
     }
     
     // MARK: - Helpers
@@ -138,12 +135,12 @@ class ProfileHeader: UICollectionReusableView {
         
         nameLabel.text = viewModel.fullName
         profileImageView.sd_setImage(with: viewModel.profileImageUrl)
-    }
-    
-    func attributedStatText(value: Int, label: String) -> NSAttributedString {
-        let attributedText = NSMutableAttributedString(string: "\(value)\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
-        attributedText.append(NSAttributedString(string: label, attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray ]))
+        editProfileButton.setTitle(viewModel.user.followStatus?.rawValue, for: .normal)
+        editProfileButton.setTitleColor(viewModel.buttonTextColor, for: .normal)
+        editProfileButton.backgroundColor = viewModel.buttonBackgroundColor
         
-        return attributedText
+        followingLabel.attributedText = viewModel.following
+        followersLabel.attributedText = viewModel.followers
+        postsLabel.attributedText = viewModel.posts
     }
 }
