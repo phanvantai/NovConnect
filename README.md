@@ -1,2 +1,2 @@
-# NoveConnect
+# NovConnect
 instagram minimal + firebase
