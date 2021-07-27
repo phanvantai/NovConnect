@@ -7,26 +7,28 @@
 
 import UIKit
 
+protocol FeedCellDelegate: AnyObject {
+    func feedCellDidClickUsername(_ feedCell: FeedCell, on post: PostModel)
+    func feedCellDidClickLike(_ feedCell: FeedCell, on post: PostModel)
+    func feedCellDidClickComment(_ feedCell: FeedCell, on post: PostModel)
+    func feedCellDidClickShare(_ feedCell: FeedCell, on post: PostModel)
+}
+
 class FeedCell: UICollectionViewCell {
     
     // MARK: - Properties
-    private lazy var profileImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.contentMode = .scaleAspectFill
-        iv.clipsToBounds = true
-        iv.isUserInteractionEnabled = true
-        iv.image = #imageLiteral(resourceName: "venom-7")
-        return iv
-    }()
+    var viewModel: PostViewModel? {
+        didSet {
+            configureUI()
+        }
+    }
     
-    private lazy var userNameButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitleColor(.black, for: .normal)
-        button.setTitle("User name", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
-        button.addTarget(self, action: #selector(didClickUserName), for: .touchUpInside)
-        return button
-    }()
+    weak var delegate: FeedCellDelegate?
+    
+    // MARK: - Views
+    private lazy var profileImageView = CustomProfileImageView(frame: .zero)
+    
+    private lazy var userNameButton = CustomUsernameButton(frame: .zero)
     
     private lazy var postImageView: UIImageView = {
         let iv = UIImageView()
@@ -41,6 +43,7 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "like_unselected"), for: .normal)
         button.tintColor = .black
+        button.addTarget(self, action: #selector(likeButtonOnClick), for: .touchUpInside)
         return button
     }()
     
@@ -48,6 +51,7 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "comment"), for: .normal)
         button.tintColor = .black
+        button.addTarget(self, action: #selector(commentButtonOnClick), for: .touchUpInside)
         return button
     }()
     
@@ -55,19 +59,18 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "send2"), for: .normal)
         button.tintColor = .black
+        button.addTarget(self, action: #selector(shareButtonOnClick), for: .touchUpInside)
         return button
     }()
     
     private let likeLabel: UILabel = {
         let label = UILabel()
-        label.text = "1 like"
         label.font = UIFont.boldSystemFont(ofSize: 13)
         return label
     }()
     
     private let captionLabel: UILabel = {
         let label = UILabel()
-        label.text = "This is a post"
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
@@ -107,6 +110,8 @@ class FeedCell: UICollectionViewCell {
         addSubview(postTimeLabel)
         postTimeLabel.anchor(top: captionLabel.bottomAnchor, left: leftAnchor, paddingTop: 8, paddingLeft: 8)
         
+        configureActions()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -114,6 +119,24 @@ class FeedCell: UICollectionViewCell {
     }
     
     // MARK: - Helpers
+    
+    func configureActions() {
+        userNameButton.addTarget(self, action: #selector(profileOnClick), for: .touchUpInside)
+        
+        let ges = UITapGestureRecognizer(target: self, action: #selector(profileOnClick))
+        profileImageView.addGestureRecognizer(ges)
+    }
+    
+    func configureUI() {
+        guard let viewModel = viewModel else { return }
+        captionLabel.text = viewModel.caption
+        postImageView.sd_setImage(with: viewModel.imageUrl)
+        likeLabel.text = viewModel.likes
+        profileImageView.sd_setImage(with: viewModel.ownerProfileImageUrl)
+        userNameButton.setTitle(viewModel.ownerUsername, for: .normal)
+        
+        viewModel.isLiked ? setLiked() : setNotLiked()
+    }
     func configureButtons() {
         let stackView = UIStackView(arrangedSubviews: [likeButton, commentButton, shareButton])
         stackView.axis = .horizontal
@@ -123,8 +146,48 @@ class FeedCell: UICollectionViewCell {
         stackView.anchor(top: postImageView.bottomAnchor, width: 120, height: 40)
     }
     
+    func updateLiked() {
+        viewModel?.post.likes += 1
+        setLiked()
+    }
+    
+    func updateUnliked() {
+        viewModel?.post.likes -= 1
+        setNotLiked()
+    }
+    
+    func setLiked() {
+        likeButton.setImage(#imageLiteral(resourceName: "like_selected"), for: .normal)
+        likeButton.tintColor = .red
+    }
+    
+    func setNotLiked() {
+        likeButton.setImage(#imageLiteral(resourceName: "like_unselected"), for: .normal)
+        likeButton.tintColor = .black
+    }
+    
     // MARK: - Actions
-    @objc func didClickUserName() {
-        print(#function)
+    @objc func profileOnClick() {
+        DebugLog(self)
+        guard let viewModel = viewModel else { return }
+        delegate?.feedCellDidClickUsername(self, on: viewModel.post)
+    }
+    
+    @objc func commentButtonOnClick() {
+        DebugLog(self)
+        guard let viewModel = viewModel else { return }
+        delegate?.feedCellDidClickComment(self, on: viewModel.post)
+    }
+    
+    @objc func likeButtonOnClick() {
+        DebugLog(self)
+        guard let viewModel = viewModel else { return }
+        delegate?.feedCellDidClickLike(self, on: viewModel.post)
+    }
+    
+    @objc func shareButtonOnClick() {
+        DebugLog(self)
+        guard let viewModel = viewModel else { return }
+        delegate?.feedCellDidClickShare(self, on: viewModel.post)
     }
 }

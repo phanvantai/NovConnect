@@ -9,8 +9,7 @@ import Firebase
 
 struct UserService {
     
-    static func fetchUser(completion: @escaping (UserModel?) -> ()) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+    static func fetchUser(with uid: String, completion: @escaping (UserModel?) -> ()) {
         COLLECTION_USERS.document(uid).getDocument { snapshot, error in
             guard let data = snapshot?.data() else {
                 completion(nil)
@@ -38,7 +37,7 @@ struct UserService {
             return
         }
         COLLECTION_FOLLOWING.document(current)
-            .collection("user-following")
+            .collection(FOLLOWING_COLLECTION)
             .document(user.uid)
             .setData([:]) { error in
                 if let error = error {
@@ -46,7 +45,7 @@ struct UserService {
                     completion(false)
                 } else {
                     COLLECTION_FOLLOWERS.document(user.uid)
-                        .collection("user-followers")
+                        .collection(FOLLOWERS_COLLECTION)
                         .document(current)
                         .setData([:]) { error in
                             if let error = error {
@@ -67,7 +66,7 @@ struct UserService {
             return
         }
         COLLECTION_FOLLOWING.document(current)
-            .collection("user-following")
+            .collection(FOLLOWING_COLLECTION)
             .document(user.uid)
             .delete { error in
                 if let error = error {
@@ -75,7 +74,7 @@ struct UserService {
                     completion(false)
                 } else {
                     COLLECTION_FOLLOWERS.document(user.uid)
-                        .collection("user-followers")
+                        .collection(FOLLOWERS_COLLECTION)
                         .document(current)
                         .delete { error in
                             if let error = error {
@@ -96,7 +95,7 @@ struct UserService {
             return
         }
         COLLECTION_FOLLOWING.document(currentUid)
-            .collection("user-following")
+            .collection(FOLLOWING_COLLECTION)
             .document(user.uid)
             .getDocument { snapshot, error in
                 if let isFollowing = snapshot?.exists {
@@ -109,7 +108,7 @@ struct UserService {
     
     static func fetchFollowers(of user: UserModel, completion: @escaping (Int) -> ()) {
         COLLECTION_FOLLOWERS.document(user.uid)
-            .collection("user-followers")
+            .collection(FOLLOWERS_COLLECTION)
             .getDocuments { snapshot, error in
                 if let followers = snapshot?.documents.count {
                     completion(followers)
@@ -121,7 +120,7 @@ struct UserService {
     
     static func fetchFollowing(of user: UserModel, completion: @escaping (Int) -> ()) {
         COLLECTION_FOLLOWING.document(user.uid)
-            .collection("user-following")
+            .collection(FOLLOWING_COLLECTION)
             .getDocuments { snapshot, error in
                 if let following = snapshot?.documents.count {
                     completion(following)

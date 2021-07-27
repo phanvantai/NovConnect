@@ -14,6 +14,11 @@ class ProfileViewController: UICollectionViewController {
     
     // MARK: - Properties
     private var user: UserModel
+    private var posts = [PostModel]() {
+        didSet {
+            user.posts = posts.count
+        }
+    }
     
     init(user: UserModel) {
         self.user = user
@@ -29,7 +34,8 @@ class ProfileViewController: UICollectionViewController {
         super.viewDidLoad()
         self.navigationItem.title = user.username
         configureCollectionView()
-        fetchUser()
+        updateProfile()
+        fetchPosts()
     }
     
     // MARK: - SetupUI
@@ -42,6 +48,12 @@ class ProfileViewController: UICollectionViewController {
     
     // MARK: - Helpers
     
+    func updateProfile() {
+        fetchUser()
+        fetchFollowers()
+        fetchFollowing()
+    }
+    
     func fetchUser() {
         if user.isCurrentUser {
             user.followStatus = .current
@@ -53,12 +65,18 @@ class ProfileViewController: UICollectionViewController {
                 }
             }
         }
+    }
+    
+    func fetchFollowers() {
         UserService.fetchFollowers(of: user) { followers in
             self.user.followers = followers
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
         }
+    }
+    
+    func fetchFollowing() {
         UserService.fetchFollowing(of: user) { following in
             self.user.following = following
             DispatchQueue.main.async {
@@ -66,17 +84,37 @@ class ProfileViewController: UICollectionViewController {
             }
         }
     }
+    
+    func fetchPosts() {
+        PostService.fetchPosts(for: user.uid) { posts in
+            if let posts = posts {
+                self.posts = posts
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+        }
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension ProfileViewController {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        DebugLog("didSelect")
+    }
 }
 
 // MARK: - UICollectionViewDataSource
 extension ProfileViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        16
+        posts.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: profileCellIdentifier, for: indexPath) as! ProfileCell
-        
+        if indexPath.row < posts.count {
+            cell.viewModel = PostViewModel(post: posts[indexPath.row])
+        }
         return cell
     }
     
@@ -99,8 +137,8 @@ extension ProfileViewController: ProfileHeaderViewModelDelegate {
     }
     
     func profileHeaderDidUpdate(_ userModel: UserModel) {
-        print("\(#function)")
-        self.fetchUser()
+        DebugLog(self)
+        self.updateProfile()
     }
 }
 

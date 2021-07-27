@@ -88,7 +88,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Actions
     @objc func logInOnClick() {
-        print(#function)
+        DebugLog(self)
         doLogin()
     }
     
