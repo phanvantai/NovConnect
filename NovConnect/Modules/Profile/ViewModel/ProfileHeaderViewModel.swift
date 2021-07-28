@@ -11,6 +11,7 @@ import Firebase
 protocol ProfileHeaderViewModelDelegate: AnyObject {
     func profileHeaderDidClickEditProfile(_ viewModel: ProfileHeaderViewModel)
     func profileHeaderDidUpdate(_ userModel: UserModel)
+    func profileHeaderDidFollow(_ userModel: UserModel)
 }
 
 struct ProfileHeaderViewModel {
@@ -70,13 +71,19 @@ struct ProfileHeaderViewModel {
             delegate?.profileHeaderDidClickEditProfile(self)
         case .following:
             // TODO: - unfollow user
-            UserService.unfollow(user: user) { success in
+            UserService.unfollow(user: user.uid) { success in
                 self.delegate?.profileHeaderDidUpdate(user)
+                
+                PostService.updateUserFeed(user: user.uid, isFollow: false)
             }
         case .notFollow:
             // TODO: - follow user
-            UserService.follow(user: user) { success in
+            UserService.follow(user: user.uid) { success in
                 delegate?.profileHeaderDidUpdate(user)
+                
+                delegate?.profileHeaderDidFollow(user)
+                
+                PostService.updateUserFeed(user: user.uid, isFollow: true)
             }
         case .none:
             print("\(#function) do nothing")

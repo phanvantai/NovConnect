@@ -29,7 +29,7 @@ class RegistrationViewController: UIViewController {
     // MARK: - Properties
     private var viewModel = RegistrationViewModel()
     private var profileImage: UIImage?
-    weak var delegate: AuthenticationDelgate?
+    weak var delegate: AuthenticationDelegate?
     
     // MARK: - Lifecycle
     

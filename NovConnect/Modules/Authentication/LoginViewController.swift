@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol AuthenticationDelgate: AnyObject {
+protocol AuthenticationDelegate: AnyObject {
     func authenticationDidFinish()
 }
 
@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Properties
     private var viewModel = LoginViewModel()
-    weak var delegate: AuthenticationDelgate?
+    weak var delegate: AuthenticationDelegate?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -107,6 +107,10 @@ class LoginViewController: UIViewController {
     
     @objc func forgotPasswordOnClick() {
         print(#function)
+        let controller = ResetPasswordViewController()
+        controller.delegate = self
+        controller.email = emailTextField.text
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     @objc func signUpOnClick() {
@@ -132,5 +136,14 @@ extension LoginViewController: FormProtocol {
     func updateForm() {
         loginButton.backgroundColor = viewModel.buttonBackgroundColor
         loginButton.isEnabled = viewModel.formIsValid
+    }
+}
+
+// MARK: - ResetPasswordViewControllerDelegate
+extension LoginViewController: ResetPasswordViewControllerDelegate {
+    func didSendResetPasswordLink(_ controller: ResetPasswordViewController) {
+        navigationController?.popViewController(animated: true)
+        
+        showMessage(withTitle: "Reset Password Success", message: "We sent a link to your email to reset your password. Please check your mail's inbox.")
     }
 }

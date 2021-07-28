@@ -125,6 +125,8 @@ extension CommentViewController: CommentInputDelegate {
         CommentService.uploadComment(comment: comment, postId: post.postId, user: user) { error in
             self.showLoading(false)
             input.clearCommentTextView()
+            
+            NotificationService.uploadNotification(to: self.post.ownerUid, from: user, type: .comment, post: self.post)
         }
     }
 }

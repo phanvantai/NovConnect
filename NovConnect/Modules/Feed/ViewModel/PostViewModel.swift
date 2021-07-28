@@ -27,6 +27,14 @@ struct PostViewModel {
         }
     }
     
+    var timestampLabel: String? {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.second, .minute,.hour, .day, .weekOfMonth]
+        formatter.maximumUnitCount = 1
+        formatter.unitsStyle = .full
+        return formatter.string(from: post.timestamp.dateValue(), to: Date())
+    }
+    
     var ownerUsername: String { post.ownerUsername }
     
     var ownerProfileImageUrl: URL? { URL(string: post.ownerProfileImageUrl) }

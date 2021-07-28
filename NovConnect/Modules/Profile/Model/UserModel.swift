@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 enum FollowStatus: String {
     case current = "Edit Profile"
@@ -27,7 +28,7 @@ struct UserModel {
     var posts = 0
     
     var isCurrentUser: Bool {
-        return CURRENT_USER_UID == uid
+        return Auth.auth().currentUser?.uid == uid
     }
     
     init(dictionary: [String: Any]) {

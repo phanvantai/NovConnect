@@ -112,8 +112,8 @@ class MainTabController: UITabBarController {
     }
 }
 
-// MARK: - AuthenticationDelgate
-extension MainTabController: AuthenticationDelgate {
+// MARK: - AuthenticationDelegate
+extension MainTabController: AuthenticationDelegate {
     func authenticationDidFinish() {
         fetchUser()
         self.dismiss(animated: true, completion: nil)

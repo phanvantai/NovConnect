@@ -30,21 +30,21 @@ struct UserService {
         }
     }
     
-    static func follow(user: UserModel, completion: @escaping (Bool) -> ()) {
-        guard let current = CURRENT_USER_UID else {
+    static func follow(user: String, completion: @escaping (Bool) -> ()) {
+        guard let current = Auth.auth().currentUser?.uid else {
             print("\(#function) no current user")
             completion(false)
             return
         }
         COLLECTION_FOLLOWING.document(current)
             .collection(FOLLOWING_COLLECTION)
-            .document(user.uid)
+            .document(user)
             .setData([:]) { error in
                 if let error = error {
                     print("\(#function) \(error.localizedDescription)")
                     completion(false)
                 } else {
-                    COLLECTION_FOLLOWERS.document(user.uid)
+                    COLLECTION_FOLLOWERS.document(user)
                         .collection(FOLLOWERS_COLLECTION)
                         .document(current)
                         .setData([:]) { error in
@@ -59,21 +59,21 @@ struct UserService {
             }
     }
     
-    static func unfollow(user: UserModel, completion: @escaping (Bool) -> ()) {
-        guard let current = CURRENT_USER_UID else {
+    static func unfollow(user: String, completion: @escaping (Bool) -> ()) {
+        guard let current = Auth.auth().currentUser?.uid else {
             print("\(#function) no current user")
             completion(false)
             return
         }
         COLLECTION_FOLLOWING.document(current)
             .collection(FOLLOWING_COLLECTION)
-            .document(user.uid)
+            .document(user)
             .delete { error in
                 if let error = error {
                     print("\(#function) \(error.localizedDescription)")
                     completion(false)
                 } else {
-                    COLLECTION_FOLLOWERS.document(user.uid)
+                    COLLECTION_FOLLOWERS.document(user)
                         .collection(FOLLOWERS_COLLECTION)
                         .document(current)
                         .delete { error in
@@ -88,15 +88,15 @@ struct UserService {
             }
     }
     
-    static func checkIfUserIsFollowing(user: UserModel, completion: @escaping (Bool) -> ()) {
-        guard let currentUid = CURRENT_USER_UID else {
+    static func checkIfUserIsFollowing(user: String, completion: @escaping (Bool) -> ()) {
+        guard let currentUid = Auth.auth().currentUser?.uid else {
             print("\(#function) no current user")
             completion(false)
             return
         }
         COLLECTION_FOLLOWING.document(currentUid)
             .collection(FOLLOWING_COLLECTION)
-            .document(user.uid)
+            .document(user)
             .getDocument { snapshot, error in
                 if let isFollowing = snapshot?.exists {
                     completion(isFollowing)

@@ -48,6 +48,9 @@ class FeedViewController: UICollectionViewController {
     @objc func handleRefresh() {
         posts.removeAll()
         fetchPost()
+        DispatchQueue.main.async {
+            self.collectionView.refreshControl?.endRefreshing()
+        }
     }
     
     // MARK: - Helpers
@@ -67,14 +70,11 @@ class FeedViewController: UICollectionViewController {
     
     func fetchPost() {
         DebugLog(self)
-        PostService.fetchPosts() { posts in
-            if let posts = posts {
-                self.posts = posts
-                self.checkIfUserLiked()
-                DispatchQueue.main.async {
-                    self.collectionView.refreshControl?.endRefreshing()
-                }
-            }
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        print("\(#function) current \(uid)")
+        PostService.fetchFeedPost { posts in
+            self.posts = posts
+            self.checkIfUserLiked()
         }
     }
     
@@ -121,7 +121,7 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 extension FeedViewController: FeedCellDelegate {
     func feedCellDidClickUsername(_ feedCell: FeedCell, on post: PostModel) {
         DebugLog(self)
-        let uid = post.owerUid
+        let uid = post.ownerUid
         UserService.fetchUser(with: uid) { user in
             if let user = user {
                 let profile = ProfileViewController(user: user)
@@ -147,6 +147,9 @@ extension FeedViewController: FeedCellDelegate {
                     return
                 }
                 feedCell.updateLiked()
+                guard let tab = self.tabBarController as? MainTabController,
+                      let user = tab.getCurrentUser() else { return }
+                NotificationService.uploadNotification(to: post.ownerUid, from: user, type: .like, post: post)
             }
         }
     }

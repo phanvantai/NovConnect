@@ -12,7 +12,7 @@ struct PostModel {
     let caption: String
     var likes: Int
     let imageUrl: String
-    let owerUid: String
+    let ownerUid: String
     let postId: String
     let timestamp: Timestamp
     
@@ -26,7 +26,7 @@ struct PostModel {
         self.caption = dictionary["caption"] as? String ?? ""
         self.likes = dictionary["likes"] as? Int ?? 0
         self.imageUrl = dictionary["imageUrl"] as? String ?? ""
-        self.owerUid = dictionary["ownerUid"] as? String ?? ""
+        self.ownerUid = dictionary["ownerUid"] as? String ?? ""
         self.timestamp = dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())
         
         self.ownerProfileImageUrl = dictionary["ownerProfileImageUrl"] as? String ?? ""

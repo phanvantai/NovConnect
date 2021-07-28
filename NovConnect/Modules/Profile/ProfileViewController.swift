@@ -38,6 +38,11 @@ class ProfileViewController: UICollectionViewController {
         fetchPosts()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateProfile()
+    }
+    
     // MARK: - SetupUI
     func configureCollectionView() {
         collectionView.backgroundColor = .white
@@ -58,7 +63,7 @@ class ProfileViewController: UICollectionViewController {
         if user.isCurrentUser {
             user.followStatus = .current
         } else {
-            UserService.checkIfUserIsFollowing(user: user) { result in
+            UserService.checkIfUserIsFollowing(user: user.uid) { result in
                 self.user.followStatus = result ? .following : .notFollow
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
@@ -131,6 +136,12 @@ extension ProfileViewController {
 
 // MARK: - UICollectionViewDelegate
 extension ProfileViewController: ProfileHeaderViewModelDelegate {
+    func profileHeaderDidFollow(_ userModel: UserModel) {
+        guard let tab = tabBarController as? MainTabController,
+              let user = tab.getCurrentUser() else { return }
+        NotificationService.uploadNotification(to: userModel.uid, from: user, type: .follow)
+    }
+    
     func profileHeaderDidClickEditProfile(_ viewModel: ProfileHeaderViewModel) {
         print(#function)
         // TODO: - Edit profile
